@@ -528,7 +528,7 @@ Type . before each command!`;
 
         if (command === "demote") {
           if (!isGroup(chat)) return sock.sendMessage(chat, { text: "❌ Group only command." });
-          if (mentions.length === 0) return sock.sendMessage(chat, { text: `Usage: ${PREFIX}demote @user` });
+          if (mentions.length === 0) return sock.sendMessage(chat, { text: `Usage: .demote @user` });
           
           try {
             const metadata = await sock.groupMetadata(chat);
@@ -550,7 +550,7 @@ Type . before each command!`;
 
         if (command === "kick") {
           if (!isGroup(chat)) return sock.sendMessage(chat, { text: "❌ Group only command." });
-          if (mentions.length === 0) return sock.sendMessage(chat, { text: `Usage: ${PREFIX}kick @user` });
+          if (mentions.length === 0) return sock.sendMessage(chat, { text: `Usage: .kick @user` });
           
           try {
             const metadata = await sock.groupMetadata(chat);
@@ -619,7 +619,7 @@ Type . before each command!`;
 
         // ----- MUSIC & YOUTUBE -----
         if (command === "song" || command === "yt") {
-          if (!arg) return await sock.sendMessage(chat, { text: `Usage: ${PREFIX}song <song name>` });
+          if (!arg) return await sock.sendMessage(chat, { text: `Usage: .song <song name>` });
           
           try {
             const search = await yts(arg);
@@ -647,7 +647,7 @@ Type . before each command!`;
 
         // ----- MATH -----
         if (command === "math") {
-          if (!arg) return sock.sendMessage(chat, { text: `Example: ${PREFIX}math 5+5*2` });
+          if (!arg) return sock.sendMessage(chat, { text: `Example: .math 5+5*2` });
           
           try {
             // Safe math evaluation
@@ -816,7 +816,7 @@ Type . before each command!`;
         if (command === "tictactoe" || command === "ttt") {
           const mentioned = m.message?.extendedTextMessage?.contextInfo?.mentionedJid || [];
           if (mentioned.length === 0) {
-            await sock.sendMessage(chat, { text: `Usage: ${PREFIX}ttt @user — mention the user you challenge` });
+            await sock.sendMessage(chat, { text: `Usage: .ttt @user — mention the user you challenge` });
             return;
           }
           
@@ -849,7 +849,7 @@ Type . before each command!`;
           
           const move = parseInt(args[0]);
           if (!move || move < 1 || move > 9) {
-            return await sock.sendMessage(chat, { text: `Usage: ${PREFIX}tttmove <1-9>` });
+            return await sock.sendMessage(chat, { text: `Usage: .tttmove <1-9>` });
           }
           
           const player = m.key.participant || m.key.remoteJid;
@@ -1115,7 +1115,7 @@ Type . before each command!`;
       }
     });
 
-    console.log(`✅ ${BOT_NAME} is ready!`);
+    console.log(`✅ ${VORTE PRO} is ready!`);
     return sock;
 
   } catch (error) {
