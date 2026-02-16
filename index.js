@@ -1,7 +1,7 @@
 // ===== SXIDHXSS MD WhatsApp Bot - Complete Single File =====
 // For Render.com deployment
 
-console.log('🚀 Starting SXIDHXSS MD WhatsApp Bot...');
+console.log('🚀 Starting VORTE PRO WhatsApp Bot...');
 
 // ===== 1. EXPRESS SERVER SETUP =====
 const express = require('express');
@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
     <!DOCTYPE html>
     <html>
     <head>
-      <title>🤖 SXIDHXSS MD Bot</title>
+      <title>🤖 VORTE PRO</title>
       <style>
         body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
         h1 { color: #4CAF50; }
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
     </head>
     <body>
       <div class="status">
-        <h1>🤖 SXIDHXSS MD Bot</h1>
+        <h1>🤖 VORTE PRO</h1>
         <p>Status: <strong style="color: green;">● Running</strong></p>
         <p>Server time: ${new Date().toLocaleString()}</p>
         <p>Use /health for API health check</p>
@@ -165,11 +165,11 @@ async function startWhatsAppBot() {
     
     // Owners configuration
     global.owner = [
-      [process.env.OWNER_1 || "+255763789948", "Primary Owner", true],
+      [process.env.OWNER_1 || "+255778271055", "Primary Owner", true],
       [process.env.OWNER_2 || "+2347016035139", "Secondary Owner", true],
     ];
     
-    global.sudo = ["255763789948", "2347016035139"];
+    global.sudo = ["255778271055", "2347016035139"];
     
     // Session management
     const SESSION_FOLDER = process.env.SESSION_FOLDER || "./session";
@@ -365,54 +365,54 @@ async function startWhatsAppBot() {
           const menu = `🔥 *${BOT_NAME} MENU* 🔥
 
 👥 *GROUP COMMANDS*
-• ${PREFIX}tagall - Mention all members
-• ${PREFIX}promote @user - Promote user to admin
-• ${PREFIX}demote @user - Demote admin
-• ${PREFIX}kick @user - Remove user
-• ${PREFIX}leave - Bot leaves group
+• .tagall - Mention all members
+• .promote @user - Promote user to admin
+• .demote @user - Demote admin
+• .kick @user - Remove user
+• .leave - Bot leaves group
 
 📊 *BOT CONTROLS*
-• ${PREFIX}ping - Check bot latency
-• ${PREFIX}menu - Show this menu
-• ${PREFIX}owner - Show bot owner
-• ${PREFIX}setnamebot <name> - Change bot name
-• ${PREFIX}setbio <text> - Change bot bio
+• .ping - Check bot latency
+• .menu - Show this menu
+• .owner - Show bot owner
+• .setnamebot <name> - Change bot name
+• .setbio <text> - Change bot bio
 
 🎮 *GAMES*
-• ${PREFIX}tictactoe @user - Start Tic Tac Toe
-• ${PREFIX}tttmove <1-9> - Make move
-• ${PREFIX}hangmanstart - Start Hangman
-• ${PREFIX}hangmanguess <letter> - Guess letter
-• ${PREFIX}quizstart - Start quiz
-• ${PREFIX}quizanswer <answer> - Answer quiz
+• .tictactoe @user - Start Tic Tac Toe
+• .tttmove <1-9> - Make move
+• .hangmanstart - Start Hangman
+• .hangmanguess <letter> - Guess letter
+• .quizstart - Start quiz
+• .quizanswer <answer> - Answer quiz
 
 🎵 *MEDIA & UTILS*
-• ${PREFIX}sticker - Make sticker from image
-• ${PREFIX}qr <text> - Generate QR code
-• ${PREFIX}song <name> - Search YouTube song
-• ${PREFIX}yt <query> - Search YouTube
+• .sticker - Make sticker from image
+• .qr <text> - Generate QR code
+• .song <name> - Search YouTube song
+• .yt <query> - Search YouTube
 
 🎲 *FUN COMMANDS*
-• ${PREFIX}joke - Random joke
-• ${PREFIX}quote - Inspirational quote
-• ${PREFIX}truth - Truth question
-• ${PREFIX}dare - Dare challenge
-• ${PREFIX}dice - Roll dice
-• ${PREFIX}coin - Flip coin
-• ${PREFIX}guess - Guess number
+• .joke - Random joke
+• .quote - Inspirational quote
+• .truth - Truth question
+• .dare - Dare challenge
+• .dice - Roll dice
+• .coin - Flip coin
+• .guess - Guess number
 
 🔧 *TOOLS*
-• ${PREFIX}math <equation> - Calculate
-• ${PREFIX}echo <text> - Echo text
-• ${PREFIX}say <text> - Bot says text
-• ${PREFIX}reverse <text> - Reverse text
-• ${PREFIX}countchars <text> - Count characters
+• .math <equation> - Calculate
+• .echo <text> - Echo text
+• .say <text> - Bot says text
+• .reverse <text> - Reverse text
+• .countchars <text> - Count characters
 
 👑 *OWNER ONLY*
-• ${PREFIX}sudo <code> - Execute code
-• ${PREFIX}broadcast <msg> - Broadcast message
+• .sudo <code> - Execute code
+• .broadcast <msg> - Broadcast message
 
-Type ${PREFIX} before each command!`;
+Type . before each command!`;
           await sock.sendMessage(chat, { text: menu });
           return;
         }
@@ -444,7 +444,7 @@ Type ${PREFIX} before each command!`;
 
         // ----- BOT SETTINGS -----
         if (command === "setnamebot") {
-          if (!arg) return sock.sendMessage(chat, { text: `Usage: ${PREFIX}setnamebot <name>` });
+          if (!arg) return sock.sendMessage(chat, { text: `Usage: .setnamebot <name>` });
           
           // Check if sender is owner
           const isOwner = global.owner.some(owner => owner[0].includes(senderNum.replace('+', '')));
@@ -462,7 +462,7 @@ Type ${PREFIX} before each command!`;
         }
 
         if (command === "setbio") {
-          if (!arg) return sock.sendMessage(chat, { text: `Usage: ${PREFIX}setbio <text>` });
+          if (!arg) return sock.sendMessage(chat, { text: `Usage: .setbio <text>` });
           
           const isOwner = global.owner.some(owner => owner[0].includes(senderNum.replace('+', '')));
           if (!isOwner) {
@@ -506,7 +506,7 @@ Type ${PREFIX} before each command!`;
 
         if (command === "promote") {
           if (!isGroup(chat)) return sock.sendMessage(chat, { text: "❌ Group only command." });
-          if (mentions.length === 0) return sock.sendMessage(chat, { text: `Usage: ${PREFIX}promote @user` });
+          if (mentions.length === 0) return sock.sendMessage(chat, { text: `Usage: .promote @user` });
           
           try {
             const metadata = await sock.groupMetadata(chat);
@@ -662,7 +662,7 @@ Type ${PREFIX} before each command!`;
 
         // ----- QR CODE -----
         if (command === "qr") {
-          if (!arg) return sock.sendMessage(chat, { text: `Example: ${PREFIX}qr hello world` });
+          if (!arg) return sock.sendMessage(chat, { text: `Example: .qr hello world` });
           
           try {
             const qrText = arg.length > 500 ? arg.substring(0, 500) : arg;
@@ -690,7 +690,7 @@ Type ${PREFIX} before each command!`;
           }
           
           const code = arg;
-          if (!code) return await sock.sendMessage(chat, { text: `Usage: ${PREFIX}sudo <javascript code>` });
+          if (!code) return await sock.sendMessage(chat, { text: `Usage: .sudo <javascript code>` });
           
           try {
             let result = eval(code);
@@ -710,7 +710,7 @@ Type ${PREFIX} before each command!`;
           
           const messageToSend = arg;
           if (!messageToSend) {
-            return await sock.sendMessage(chat, { text: `Usage: ${PREFIX}broadcast <message>` });
+            return await sock.sendMessage(chat, { text: `Usage: .broadcast <message>` });
           }
           
           await sock.sendMessage(chat, { text: `📢 Starting broadcast to all chats...` });
@@ -807,7 +807,7 @@ Type ${PREFIX} before each command!`;
         }
 
         if (command === "say") {
-          if (!arg) return sock.sendMessage(chat, { text: `Usage: ${PREFIX}say <text>` });
+          if (!arg) return sock.sendMessage(chat, { text: `Usage: .say <text>` });
           await sock.sendMessage(chat, { text: arg });
           return;
         }
@@ -836,7 +836,7 @@ Type ${PREFIX} before each command!`;
           };
           
           await sock.sendMessage(chat, { 
-            text: `🎮 *Tic Tac Toe Started!*\n\nPlayer X: @${jidToNumber(initiator)}\nPlayer O: @${jidToNumber(opponent)}\n\nCurrent board:\n${tttBoardToText(games.ticTacToe[chat].board)}\n\nIt's X's turn! Use ${PREFIX}tttmove <1-9>` 
+            text: `🎮 *Tic Tac Toe Started!*\n\nPlayer X: @${jidToNumber(initiator)}\nPlayer O: @${jidToNumber(opponent)}\n\nCurrent board:\n${tttBoardToText(games.ticTacToe[chat].board)}\n\nIt's X's turn! Use .tttmove <1-9>` 
           });
           return;
         }
@@ -925,7 +925,7 @@ Type ${PREFIX} before each command!`;
           };
           
           await sock.sendMessage(chat, { 
-            text: `🎯 *Hangman Started!*\n\nWord: ${games.hangman[chat].display.join(" ")}\nTries left: 6\n\nGuess a letter with: ${PREFIX}hangmanguess <letter>` 
+            text: `🎯 *Hangman Started!*\n\nWord: ${games.hangman[chat].display.join(" ")}\nTries left: 6\n\nGuess a letter with: .hangmanguess <letter>` 
           });
           return;
         }
@@ -938,7 +938,7 @@ Type ${PREFIX} before each command!`;
           
           const letter = args[0]?.toLowerCase();
           if (!letter || letter.length !== 1 || !/[a-z]/.test(letter)) {
-            return await sock.sendMessage(chat, { text: `Usage: ${PREFIX}hangmanguess <single letter>` });
+            return await sock.sendMessage(chat, { text: `Usage: .hangmanguess <single letter>` });
           }
           
           if (game.guessed.includes(letter)) {
@@ -1025,7 +1025,7 @@ Type ${PREFIX} before each command!`;
           };
           
           await sock.sendMessage(chat, { 
-            text: `🧠 *Quiz Started!*\n\nQuestion: ${quiz.q}\n\nChoices: ${quiz.choices.join(", ")}\n\nAnswer with: ${PREFIX}quizanswer <answer>` 
+            text: `🧠 *Quiz Started!*\n\nQuestion: ${quiz.q}\n\nChoices: ${quiz.choices.join(", ")}\n\nAnswer with: .quizanswer <answer>` 
           });
           return;
         }
@@ -1037,7 +1037,7 @@ Type ${PREFIX} before each command!`;
           }
           
           if (!arg) {
-            return await sock.sendMessage(chat, { text: `Usage: ${PREFIX}quizanswer <answer>` });
+            return await sock.sendMessage(chat, { text: `Usage: .quizanswer <answer>` });
           }
           
           const userAnswer = arg.trim().toLowerCase();
@@ -1055,19 +1055,19 @@ Type ${PREFIX} before each command!`;
 
         // ----- UTILITY COMMANDS -----
         if (command === "echo") {
-          await sock.sendMessage(chat, { text: arg || `Usage: ${PREFIX}echo <text>` });
+          await sock.sendMessage(chat, { text: arg || `Usage: .echo <text>` });
           return;
         }
 
         if (command === "reverse") {
-          if (!arg) return sock.sendMessage(chat, { text: `Usage: ${PREFIX}reverse <text>` });
+          if (!arg) return sock.sendMessage(chat, { text: `Usage: .reverse <text>` });
           const reversed = arg.split("").reverse().join("");
           await sock.sendMessage(chat, { text: reversed });
           return;
         }
 
         if (command === "countchars") {
-          if (!arg) return sock.sendMessage(chat, { text: `Usage: ${PREFIX}countchars <text>` });
+          if (!arg) return sock.sendMessage(chat, { text: `Usage: .countchars <text>` });
           const count = arg.length;
           const wordCount = arg.trim().split(/\s+/).length;
           await sock.sendMessage(chat, { text: `📊 Text Analysis:\n• Characters: ${count}\n• Words: ${wordCount}` });
@@ -1076,7 +1076,7 @@ Type ${PREFIX} before each command!`;
 
         // ----- FALLBACK -----
         await sock.sendMessage(chat, { 
-          text: `❓ Unknown command: *${command}*\n\nType *${PREFIX}menu* for list of commands.` 
+          text: `❓ Unknown command: *${command}*\n\nType .menu* for list of commands.` 
         });
 
       } catch (error) {
@@ -1100,7 +1100,7 @@ Type ${PREFIX} before each command!`;
           
           // Send welcome message
           await sock.sendMessage(num, { 
-            text: `👋 Hello! I'm *${BOT_NAME}*\n\nType *${PREFIX}menu* to see all commands.\n\nNeed help? Contact my owner!` 
+            text: `👋 Hello! I'm *${BOT_NAME}*\n\nType *.menu* to see all commands.\n\nNeed help? Contact my owner!` 
           });
         }
       } catch (error) {
@@ -1176,7 +1176,7 @@ process.on('SIGINT', () => {
 // Startup message
 console.log(`
 =========================================
-🤖 SXIDHXSS MD WhatsApp Bot
+🤖 VORTE PRO WhatsApp Bot
 🌐 Server starting on port ${PORT}
 📦 Version: 1.0.0
 =========================================
