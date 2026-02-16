@@ -361,8 +361,9 @@ async function startWhatsAppBot() {
           return;
         }
 
-        if (command === "menu" || command === "help") {
-          const menu = `🔥 *${BOT_NAME} MENU* 🔥
+      if (command === "menu" || command === "help") {
+    const menuImageUrl = "https://files.catbox.moe/y7vjf2.jpg"; // <-- your menu image URL
+    const menuText = `🔥 *${VORTE PRO} MENU* 🔥
 
 👥 *GROUP COMMANDS*
 • .tagall - Mention all members
@@ -413,9 +414,13 @@ async function startWhatsAppBot() {
 • .broadcast <msg> - Broadcast message
 
 Type . before each command!`;
-          await sock.sendMessage(chat, { text: menu });
-          return;
-        }
+
+    await sock.sendMessage(chat, {
+        image: { url: menuImageUrl },
+        caption: menuText
+    });
+    return;
+}
 
         if (command === "owner") {
           const owners = global.owner.map((o, i) => `${i+1}. ${o[0]} - ${o[1]}`).join("\n");
