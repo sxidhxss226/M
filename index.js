@@ -624,31 +624,35 @@ Type . before each command!`;
 
         // ----- MUSIC & YOUTUBE -----
         if (command === "song" || command === "yt") {
-          if (!arg) return await sock.sendMessage(chat, { text: `Usage: .song <song name>` });
-          
-          try {
-            const search = await yts(arg);
-            const videos = search.videos.slice(0, 3);
-            
-            if (!videos.length) {
-              return await sock.sendMessage(chat, { text: "❌ No results found." });
-            }
-            
-            let resultText = "🎵 *Search Results:*\n\n";
-            videos.forEach((video, i) => {
-              resultText += `${i+1}. *${video.title}*\n`;
-              resultText += `   ⏱️ ${video.timestamp}\n`;
-              resultText += `   👁️ ${video.views} views\n`;
-              resultText += `   🔗 ${video.url}\n\n`;
-            });
-            
-            await sock.sendMessage(chat, { text: resultText });
-          } catch (e) {
-            console.error('YouTube search error:', e);
-            await sock.sendMessage(chat, { text: "❌ Error searching for song." });
-          }
-          return;
+    if (!arg) return await sock.sendMessage(chat, { text: `Usage: .song <song name>` });
+
+    try {
+        const response = await youtube.search.list({
+            part: 'snippet',
+            q: arg,
+            maxResults: 3,
+            type: 'video'
+        });
+
+        const videos = response.data.items;
+
+        if (!videos.length) {
+            return await sock.sendMessage(chat, { text: "❌ No results found." });
         }
+
+        let resultText = "🎵 *Search Results:*\n\n";
+        videos.forEach((video, i) => {
+            resultText += `${i+1}. *${video.snippet.title}*\n`;
+            resultText += `   🔗 https://www.youtube.com/watch?v=${video.id.videoId}\n\n`;
+        });
+
+        await sock.sendMessage(chat, { text: resultText });
+    } catch (e) {
+        console.error('YouTube API search error:', e);
+        await sock.sendMessage(chat, { text: "❌ Error searching for song." });
+    }
+    return;
+}
 
         // ----- MATH -----
         if (command === "math") {
