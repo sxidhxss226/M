@@ -53,7 +53,7 @@ app.get('/keep-alive', (req, res) => {
   res.status(200).json({ 
     alive: true, 
     time: new Date().toISOString(),
-    bot: 'SXIDHXSS MD'
+    bot: 'VORTE PRO'
   });
 });
 
@@ -160,16 +160,16 @@ async function startWhatsAppBot() {
     const QRCode = require("qrcode");
 
     // ===== CONFIGURATION =====
-    const BOT_NAME = process.env.BOT_NAME || "SXIDHXSS MD";
+    const BOT_NAME = process.env.BOT_NAME || "VORTE PRO";
     const PREFIX = process.env.PREFIX || ".";
     
     // Owners configuration
     global.owner = [
       [process.env.OWNER_1 || "+255778271055", "Primary Owner", true],
-      [process.env.OWNER_2 || "+2347016035139", "Secondary Owner", true],
+      [process.env.OWNER_2 || "+6285863023532", "Secondary Owner", true],
     ];
     
-    global.sudo = ["255778271055", "2347016035139"];
+    global.sudo = ["255778271055", "+6285863023532"];
     
     // Session management
     const SESSION_FOLDER = process.env.SESSION_FOLDER || "./session";
